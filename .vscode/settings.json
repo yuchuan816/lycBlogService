@@ -1,6 +1,5 @@
 {
     "python.pythonPath": "venv\\Scripts\\python.exe",
-    "terminal.integrated.shell.windows": null,
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": false,
 }
