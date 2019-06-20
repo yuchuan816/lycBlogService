@@ -17,23 +17,23 @@ def get_article_list(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-@api_view(['GET', 'POST'])
-def add_article(request):
-    serializer = ArticleSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    return Response({"error": serializer.errors}, status=status.HTTP_200_OK)
+# @api_view(['GET', 'POST'])
+# def add_article(request):
+#     serializer = ArticleSerializer(data=request.data)
+#     if serializer.is_valid():
+#         serializer.save()
+#         return Response(serializer.data, status=status.HTTP_200_OK)
+#     return Response({"error": serializer.errors}, status=status.HTTP_200_OK)
 
 
-@api_view(['GET', 'POST'])
-def modify_article():
-    article = Article.objects.all()
+# @api_view(['GET', 'POST'])
+# def modify_article():
+#     article = Article.objects.all()
 
 
-@api_view(['GET', 'POST'])
-def delete_article():
-    article = Article.objects.all()
+# @api_view(['GET', 'POST'])
+# def delete_article():
+#     article = Article.objects.all()
 
 # class ArticleView(APIView):
 #     def get(self, request, *args, **kwargs):
@@ -42,6 +42,6 @@ def delete_article():
 #         return Response(serializer.data)
 
 
-# class ArticleView(generics.ListCreateAPIView):
-#     queryset = Article.objects.all()
-#     serializer_class = ArticleSerializer
+class ArticleView(generics.ListCreateAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
