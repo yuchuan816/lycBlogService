@@ -1,37 +1,32 @@
-from rest_framework import status, viewsets
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from .serializers import ArticleSerializer
+from rest_framework import viewsets, generics
+from .serializers import ArticleSerializer, UserSerializer
 from .models import Article
+from django.contrib.auth.models import User
 
 # Create your views here.
-
-
-# @api_view(['GET', 'POST'])
-# def get_article_list(request):
-#     req = request.data
-#     pk = req.get('id', None)
-#     has_value = pk is not None
-#     articles = Article.objects.get(pk=pk) if has_value else Article.objects.all()
-#     serializer = ArticleSerializer(instance=articles, many=not has_value)
-#     return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-# @api_view(['GET', 'POST'])
-# def add_article(request):
-#     serializer = ArticleSerializer(data=request.data)
-#     if serializer.is_valid():
-#         serializer.save()
-#         return Response(serializer.data, status=status.HTTP_200_OK)
-#     return Response({"error": serializer.errors}, status=status.HTTP_200_OK)
-
-# class ArticleView(APIView):
-#     def get(self, request, *args, **kwargs):
-#         articles = Article.objects.all()
-#         serializer = ArticleSerializer(instance=articles, many=True)
-#         return Response(serializer.data)
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
+
+    # def list(self, request):
+    #     pass
+
+    # def create(self, request):
+    #     pass
+
+    # def retrieve(self, request, pk=None):
+    #     pass
+
+    # def update(self, request, pk=None):
+    #     pass
+
+    # def partial_update(self, request, pk=None):
+    #     pass
+
+    # def destroy(self, request, pk=None):
+    #     pass
