@@ -5,23 +5,26 @@ from .models import Article, Tag, Category
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username')
+        fields = ('username',)
 
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ('name')
+        fields = ('name',)
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ('name')
+        fields = ('name',)
 
 
 class ArticleSerializer(serializers.ModelSerializer):
+    category = CategorySerializer()
+    tags = TagSerializer()
+
     class Meta:
         model = Article
         fields = ('title', 'body', 'author', 'tags',
-                    'category', 'created_time', 'modified_time')
+                    'category', 'created_time', 'modified_time',)
