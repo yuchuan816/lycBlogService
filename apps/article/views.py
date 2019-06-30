@@ -1,7 +1,11 @@
-from rest_framework import viewsets, generics
-from .serializers import ArticleSerializer, UserSerializer
-from .models import Article
+from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.views.generic.base import View
+from rest_framework import generics, viewsets
+
+from .models import Article
+from .serializers import ArticleSerializer, UserSerializer
+
 
 # Create your views here.
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
