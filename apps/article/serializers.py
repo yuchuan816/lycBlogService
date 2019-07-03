@@ -22,7 +22,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class ArticleSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
-    tags = TagSerializer()
+    tags = TagSerializer(many=True)
 
     class Meta:
         model = Article
