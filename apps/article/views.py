@@ -1,7 +1,5 @@
-from django.http import HttpResponse
 from django.contrib.auth.models import User
-from django.views.generic.base import View
-from rest_framework import generics, viewsets
+from rest_framework import viewsets
 
 from .models import Article
 from .serializers import ArticleSerializer, UserSerializer
