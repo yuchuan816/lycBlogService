@@ -2,18 +2,13 @@ from django.contrib.auth.models import User
 from rest_framework import viewsets
 
 from .models import Article
-from .serializers import ArticleSerializer, UserSerializer
+from .serializers import ArticleSerializer
 
 
 # Create your views here.
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
 class ArticleViewSet(viewsets.ModelViewSet):
-    serializer_class = ArticleSerializer
     queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
 
     # def list(self, request):
     #     pass
