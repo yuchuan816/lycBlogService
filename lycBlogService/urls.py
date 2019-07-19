@@ -19,11 +19,16 @@ from rest_framework.documentation import include_docs_urls
 from rest_framework_simplejwt import views as simplejwt_views
 
 urlpatterns = [
+    # django后台管理
     path('admin/', admin.site.urls),
-    path('api/login/', simplejwt_views.TokenObtainPairView.as_view(),
-         name='token_obtain_pair'),
-    path('api/token/refresh/', simplejwt_views.TokenRefreshView.as_view(),
-         name='token_refresh'),
+
+    # Simple JWT
+    path('api/login/', simplejwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', simplejwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+
+    # Django REST Framework
     path('api/docs/', include_docs_urls(title='DRF文档')),
+
+    # api
     path('api/article/', include('article.urls')),
 ]
