@@ -31,4 +31,5 @@ urlpatterns = [
 
     # api
     path('api/article/', include('article.urls')),
+    path('api/user/', include('user.urls')),
 ]

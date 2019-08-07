@@ -26,7 +26,7 @@ class Article(models.Model):
     created_time = models.DateTimeField(default=timezone.now)
     modified_time = models.DateTimeField(default=timezone.now)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    tags = models.ManyToManyField(Tag, related_name='tags', blank=True, null=True)
+    tags = models.ManyToManyField(Tag, related_name='tags', blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     is_delete = models.BooleanField(default=False)
 

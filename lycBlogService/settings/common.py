@@ -36,8 +36,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'article',
-    'commentary',
+    'article.apps.ArticleConfig',
+    'commentary.apps.CommentaryConfig',
+    'user.apps.UserConfig',
     'rest_framework',
     'corsheaders',
     'django.contrib.admin',
@@ -175,4 +176,5 @@ CORS_ALLOW_HEADERS = (
     'Content-Type',
     'X-Requested-With',
     'xyt-agent',
+    'Authorization'
 )

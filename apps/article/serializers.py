@@ -15,6 +15,13 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ('name',)
 
 
+class ArticleListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Article
+        fields = ('id', 'title', 'created_time', 'modified_time',)
+
+
 class ArticleSerializer(serializers.ModelSerializer):
     category = serializers.StringRelatedField()
     tags = serializers.StringRelatedField(many=True, required=False)

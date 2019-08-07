@@ -1,28 +1,28 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins, permissions
+from utils.permissions import IsOwnerOrReadOnly
 
 from .models import Article
-from .serializers import ArticleSerializer
+from .serializers import ArticleSerializer, ArticleListSerializer
 
 
 # Create your views here.
-class ArticleViewSet(viewsets.ModelViewSet):
+class ArticleViewSet(viewsets.GenericViewSet,
+                     mixins.CreateModelMixin,
+                     mixins.ListModelMixin,
+                     mixins.RetrieveModelMixin,
+                     mixins.UpdateModelMixin,):
+
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
-    # def list(self, request):
-    #     pass
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return ArticleListSerializer
+        else:
+            return ArticleSerializer
 
-    # def create(self, request):
-    #     pass
+    def get_permissions(self):
+        if self.action == 'partial_update':
+            return [IsOwnerOrReadOnly()]
 
-    # def retrieve(self, request, pk=None):
-    #     pass
-
-    # def update(self, request, pk=None):
-    #     pass
-
-    # def partial_update(self, request, pk=None):
-    #     pass
-
-    # def destroy(self, request, pk=None):
-    #     pass
+        return []
