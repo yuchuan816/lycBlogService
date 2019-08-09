@@ -12,4 +12,4 @@ EXPOSE 5000
 
 ENTRYPOINT ["python"]
 
-CMD ["manage.py", "runserver", "5000"]
+CMD ["manage.py", "runserver", "0.0.0.0:5000"]

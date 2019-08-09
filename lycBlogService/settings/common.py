@@ -30,7 +30,7 @@ SECRET_KEY = 'p!$0)dmv(s4#ylh$i-hbb*rg)a=hg8nv2kt4+$qrwuj=n^zz@*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['129.204.76.142']
 
 
 # Application definition
