@@ -8,8 +8,8 @@ WORKDIR /app
 
 RUN pip install -r ./requirements/prod.txt
 
-EXPOSE 5000
+EXPOSE 8000
 
 ENTRYPOINT ["python"]
 
-CMD ["manage.py", "runserver", "0.0.0.0:5000"]
+CMD ["manage.py", "runserver", "0.0.0.0:8000"]
