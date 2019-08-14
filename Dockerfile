@@ -8,7 +8,7 @@ WORKDIR /server
 
 RUN pip install uwsgi uwsgitop
 
-RUN pip install -r ./requirements/prod.txt
+RUN pip install -r ./requirements/prod.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 EXPOSE 8000
 
