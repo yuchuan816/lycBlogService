@@ -10,6 +10,6 @@ RUN pip install uwsgi uwsgitop -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 RUN pip install -r ./requirements/prod.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
-EXPOSE 8000
+EXPOSE 9090
 
 CMD ["uwsgi", "--ini", "uwsgi.ini"]
