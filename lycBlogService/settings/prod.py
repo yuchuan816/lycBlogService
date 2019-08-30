@@ -2,4 +2,16 @@ from .common import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['129.204.76.142', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
+
+DATABASES = {
+    'default': {
+        # 'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'blog',
+        'USER': 'yuchuan',
+        'PASSWORD': '95816',
+        'HOST': 'backend_mysql',
+        'PORT': '3306',
+    }
+}
