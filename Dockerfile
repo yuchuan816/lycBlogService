@@ -8,10 +8,9 @@ COPY . /server
 
 WORKDIR /server
 
-RUN pip install uwsgi uwsgitop mysql-connector-python -i https://pypi.tuna.tsinghua.edu.cn/simple
-
-RUN pip install -r ./requirements/prod.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip install -r ./requirements/prod.txt
 
 EXPOSE 80
 
+# CMD python manage.py migrate && uwsgi --ini uwsgi/uwsgi.ini
 CMD uwsgi --ini uwsgi/uwsgi.ini
