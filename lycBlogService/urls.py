@@ -16,20 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
-from rest_framework_simplejwt import views as simplejwt_views
+from rest_framework.authtoken import views
 
 urlpatterns = [
-    # django后台管理
+    # Django 后台管理
     path('admin/', admin.site.urls),
 
-    # Simple JWT
-    path('api/login/', simplejwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', simplejwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-
     # Django REST Framework
+    path('api/login/', views.obtain_auth_token),
     path('api/docs/', include_docs_urls(title='DRF文档')),
-
-    # api
     path('api/article/', include('article.urls')),
     path('api/user/', include('user.urls')),
 ]

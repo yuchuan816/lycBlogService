@@ -1,5 +1,6 @@
-from rest_framework import viewsets, mixins, permissions
+from rest_framework import viewsets, mixins
 from utils.permissions import IsOwnerOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from .models import Article
 from .serializers import ArticleSerializer, ArticleListSerializer
@@ -12,6 +13,7 @@ class ArticleViewSet(viewsets.GenericViewSet,
                      mixins.RetrieveModelMixin,
                      mixins.UpdateModelMixin,):
 
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
 
@@ -25,4 +27,4 @@ class ArticleViewSet(viewsets.GenericViewSet,
         if self.action == 'partial_update':
             return [IsOwnerOrReadOnly()]
 
-        return []
+        return super(ArticleViewSet, self).get_permissions()

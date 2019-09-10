@@ -8,7 +8,7 @@ DATABASES = {
         'NAME': 'blog',
         'USER': 'yuchuan',
         'PASSWORD': '95816',
-        'HOST': '127.0.0.1',
+        'HOST': '129.204.76.142',
         'PORT': '3306'
     }
 }

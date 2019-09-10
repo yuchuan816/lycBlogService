@@ -22,6 +22,8 @@ protobuf==3.9.1
 pycodestyle==2.5.0
 PyJWT==1.7.1
 pylint==2.3.1
+pylint-django==2.0.11
+pylint-plugin-utils==0.5
 pytz==2019.1
 requests==2.22.0
 six==1.12.0
