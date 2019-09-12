@@ -36,9 +36,10 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
+    'user.apps.UserConfig',
     'article.apps.ArticleConfig',
     'commentary.apps.CommentaryConfig',
-    'user.apps.UserConfig',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
@@ -117,9 +118,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
+        'utils.authentication.ExpiringTokenAuthentication',
     )
 }
 

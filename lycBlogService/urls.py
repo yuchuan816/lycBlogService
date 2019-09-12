@@ -16,15 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
-from rest_framework.authtoken import views
+# from rest_framework.authtoken import views
 
 urlpatterns = [
     # Django 后台管理
     path('admin/', admin.site.urls),
 
     # Django REST Framework
-    path('api/login/', views.obtain_auth_token),
+    # path('api/login/', views.obtain_auth_token),
+    path('api/auth/', include('account.urls')),
     path('api/docs/', include_docs_urls(title='DRF文档')),
-    path('api/article/', include('article.urls')),
     path('api/user/', include('user.urls')),
+    path('api/article/', include('article.urls')),
 ]
