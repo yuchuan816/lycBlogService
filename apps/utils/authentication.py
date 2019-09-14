@@ -1,5 +1,7 @@
 from rest_framework.authentication import TokenAuthentication, get_authorization_header
 from rest_framework.exceptions import AuthenticationFailed
+from django.utils.translation import ugettext_lazy as _
+from rest_framework import exceptions
 from datetime import timedelta
 from django.utils import timezone
 

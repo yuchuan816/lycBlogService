@@ -10,13 +10,17 @@ class ObtainExpiringAuthToken(ObtainAuthToken):
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            token, created = Token.objects.get_or_create(
-                user=serializer.validated_data['user'])
+            try:
+                token = Token.objects.get(
+                    user=serializer.validated_data['user'])
+            except Token.DoesNotExist:
+                token = None
 
-            if not created:
-                # update the created time of the token to keep it valid
-                token.created = timezone.now()
-                token.save()
+            if token:
+                token.delete()
+
+            token = Token.objects.create(
+                user=serializer.validated_data['user'])
 
             return Response({'token': token.key})
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
