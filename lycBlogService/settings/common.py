@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
-from datetime import timedelta
 import os
 import sys
 
@@ -42,6 +41,7 @@ INSTALLED_APPS = [
     'commentary.apps.CommentaryConfig',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -113,14 +113,19 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        # 全局验证token
-        'rest_framework.permissions.IsAuthenticated',
-    ),
+    # 权限 & 认证
+    # 'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'utils.authentication.ExpiringTokenAuthentication',
-    )
+    ),
+
+    # 过滤器
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+
+    # 分页器
+    'DEFAULT_PAGINATION_CLASS': 'utils.pagination.CommonPagination',
+    'PAGE_SIZE': 30,
 }
 
 # Internationalization

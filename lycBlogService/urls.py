@@ -28,4 +28,5 @@ urlpatterns = [
     path('api/docs/', include_docs_urls(title='DRF文档')),
     path('api/user/', include('user.urls')),
     path('api/article/', include('article.urls')),
+    path('api/comment/', include('commentary.urls')),
 ]

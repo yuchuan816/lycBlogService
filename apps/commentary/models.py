@@ -8,8 +8,10 @@ from django.utils import timezone
 class Comment(models.Model):
     content = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    article = models.ForeignKey(Article, null=True, blank=True, related_name='comments', on_delete=models.CASCADE)
-    comments = models.ForeignKey('self', null=True, blank=True, related_name='reply', on_delete=models.CASCADE)
+    article = models.ForeignKey(
+        Article, null=True, blank=True, related_name='comments', on_delete=models.CASCADE)
+    comments = models.ForeignKey(
+        'self', null=True, blank=True, related_name='reply', on_delete=models.CASCADE)
     created_time = models.DateTimeField(default=timezone.now)
     is_delete = models.BooleanField(default=False)
 
