@@ -11,9 +11,14 @@ class CommentViewSet(viewsets.GenericViewSet,
                      mixins.CreateModelMixin,
                      mixins.ListModelMixin):
 
-    queryset = Comment.objects.filter(comments_id=None)
+    queryset = Comment.objects.filter(comments=None)
     permission_classes = (IsAuthenticatedOrReadOnly,)
     serializer_class = CommentSerializer
+    filter_fields = ('article',)
+
+    def list(self, request, *args, **kwargs):
+
+        return Response({"sdf": "s"}, status=status.HTTP_400_BAD_REQUEST)
 
     def create(self, request, *args, **kwargs):
         request.data.update({'user': request.user.id})
